@@ -14,6 +14,7 @@ export class TodosComponent implements OnInit {
   // @Output() onToggle = new EventEmitter<number>();
 
   private loading: boolean = true;
+  private searchString: string = '';
 
   constructor(private todosService: TodosService) { }
 

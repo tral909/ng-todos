@@ -1,6 +1,11 @@
 <div *ngIf="!loading">
+
+  <div class="filter">
+    <input [(ngModel)]="searchString" type="text" placeholder="Filter todo by title...">
+  </div>
+
   <ul *ngIf="todosService.todos.length; else noTodos">
-    <li *ngFor="let todo of todosService.todos; let i = index">
+    <li *ngFor="let todo of todosService.todos | todosFilter:searchString; let i = index">
       <span [class.done]="todo.completed">
         <input type="checkbox" [checked]="todo.completed" (change)="onChange(todo.id)">
         <strong>{{ i + 1 }}</strong> {{ todo.title }}
